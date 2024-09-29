@@ -53,7 +53,6 @@ def step_impl(context):
     # price = context.driver.find_element(By.XPATH,
     #                             '//*[@id="container"]/div/div[3]/div/div[2]/div[2]/div/div[1]/div/a[3]/div[1]/div[1]').text
     # print(product, price)
-    print("Just passing")
     pass
 
-    context.driver.close()
+    # context.driver.close()
