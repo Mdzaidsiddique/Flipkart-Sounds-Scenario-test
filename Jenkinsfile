@@ -25,6 +25,7 @@ pipeline {
             steps {
                 // Run Behave with Allure report generation
                 bat 'behave -f allure_behave.formatter:AllureFormatter -o allure-results'
+
             }
         }
     }
