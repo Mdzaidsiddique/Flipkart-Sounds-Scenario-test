@@ -1,14 +1,14 @@
 pipeline {
     agent any
-
+    environment {
+        PATH = "$PATH:C:\\Python\\Scripts;C:\\Python"
+    }
     stages {
-        stage('Checkout') {
+        stage('Clone Repository') {
             steps {
-                // Checkout the code from GitHub
-                git branch: 'main', url: 'https://github.com/Mdzaidsiddique/Flipkart-Sounds-Scenario-test.git'
+                git url: 'https://github.com/Mdzaidsiddique/Flipkart-Sounds-Scenario-test.git', branch: 'main'
             }
         }
-
         stage('Install Dependencies') {
             steps {
                 bat '''
@@ -21,19 +21,14 @@ pipeline {
                 '''
             }
         }
-
         stage('Run Tests') {
             steps {
-                // Run Behave tests
-                script {
-                    // Change to the directory where your features are located if needed
-                   bat 'behave -f allure_behave.formatter:AllureFormatter -o allure-results'
-                }
+                // Run Behave with Allure report generation
+                bat 'behave -f allure_behave.formatter:AllureFormatter -o allure-results'
             }
         }
     }
-
-   post {
+    post {
         always {
             echo 'Cleaning up workspace'
             cleanWs()
