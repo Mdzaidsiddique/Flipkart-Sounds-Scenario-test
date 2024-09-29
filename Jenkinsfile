@@ -24,15 +24,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Run Behave with Allure report generation
-                // bat 'behave -f allure_behave.formatter:AllureFormatter -o allure-results'
-                bat 'behave --no-capture --no-capture-stderr'
-            }
-        }
-
-        stage('Generate Allure Report') {
-            steps {
-                // Generate the Allure report
-                bat 'allure serve allure-results'
+                bat 'behave -f allure_behave.formatter:AllureFormatter -o allure-results'
             }
         }
     }
