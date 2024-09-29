@@ -44,5 +44,9 @@ pipeline {
         failure {
             echo 'Build failed, please check the logs.'
         }
+        always {
+            echo 'Archiving Allure reports...'
+            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+        }
     }
 }
