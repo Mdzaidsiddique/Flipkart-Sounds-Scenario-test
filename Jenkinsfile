@@ -32,16 +32,14 @@ pipeline {
         always {
             echo 'Cleaning up workspace'
             cleanWs()
+            echo 'Archiving Allure reports...'
+            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
         success {
             echo 'Build succeeded, tests passed!'
         }
         failure {
             echo 'Build failed, please check the logs.'
-        }
-        always {
-            echo 'Archiving Allure reports...'
-            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
     }
 }
