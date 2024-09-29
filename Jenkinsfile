@@ -27,7 +27,7 @@ pipeline {
                 // Run Behave tests
                 script {
                     // Change to the directory where your features are located if needed
-                    bat 'behave'
+                   bat 'behave -f allure_behave.formatter:AllureFormatter -o allure-results'
                 }
             }
         }
