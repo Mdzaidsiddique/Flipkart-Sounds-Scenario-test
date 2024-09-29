@@ -17,7 +17,7 @@ def step_impl(context):
     # context.driver.get("https://www.flipkart.com/")
     pass
 
-sound_bar_button = None
+# sound_bar_button = None
 
 @when(u'Click on Speakers and hover to soundbar')
 def step_impl(context):
